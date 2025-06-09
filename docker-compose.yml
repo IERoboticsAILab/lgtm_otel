@@ -20,5 +20,5 @@ services:
       - otel-lgtm
     restart: unless-stopped
       
-  volumes:
-    grafana_data:
+volumes:
+  grafana_data:
