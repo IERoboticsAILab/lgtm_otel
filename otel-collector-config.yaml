@@ -8,7 +8,13 @@ receivers:
       filesystem:
       network:
       load:
-
+  prometheus:
+      config:
+        scrape_configs:
+          - job_name: 'http-status-checker'
+            scrape_interval: 15s
+            static_configs:
+              - targets: ['http-status-checker:1738']
 processors:
   batch:
 
@@ -21,6 +27,6 @@ exporters:
 service:
   pipelines:
     metrics:
-      receivers: [hostmetrics]
+      receivers: [hostmetrics, prometheus]
       processors: [batch]
       exporters: [otlp]

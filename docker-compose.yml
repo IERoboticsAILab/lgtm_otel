@@ -8,6 +8,8 @@ services:
       - "4318:4318"     # OTLP HTTP
     volumes: 
       - grafana_data:/var/lib/grafana
+    networks:
+      - otelnet
     restart: unless-stopped
 
   otel-collector:
@@ -18,7 +20,15 @@ services:
     command: ["--config=/etc/otel-collector-config.yaml"]
     depends_on:
       - otel-lgtm
+    networks:
+      - otelnet
     restart: unless-stopped
       
 volumes:
   grafana_data:
+
+networks:
+  otelnet:
+    external: true
+
+
