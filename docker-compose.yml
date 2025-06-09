@@ -19,4 +19,6 @@ services:
     depends_on:
       - otel-lgtm
     restart: unless-stopped
-
+      
+  volumes:
+    grafana_data:
