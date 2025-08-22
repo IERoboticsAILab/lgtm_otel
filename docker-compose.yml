@@ -16,7 +16,7 @@ services:
     image: otel/opentelemetry-collector:latest
     container_name: otel-collector
     volumes:
-      - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
+      - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml:ro
     command: ["--config=/etc/otel-collector-config.yaml"]
     depends_on:
       - otel-lgtm
